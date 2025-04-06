@@ -125,7 +125,7 @@ footer {
 /* Button Theme */
 button {
     background-color: #007bff;
-    color: #fff;
+    color: #888888;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -135,11 +135,11 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ffff00;
     transform: scale(1.05);
 }
 
 button:active {
-    background-color: #003f7f;
+    background-color: #000000;
     transform: scale(0.95);
 }
