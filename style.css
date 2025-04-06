@@ -122,10 +122,10 @@ footer {
     margin-top: 2rem;
 }
 
-/* Button Theme */
+/* Button Theme Colors */
 button {
-    background-color: #007bff;
-    color: #888888;
+    background-color: #00b3c7;
+    color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -135,11 +135,11 @@ button {
 }
 
 button:hover {
-    background-color: #ffff00;
+    background-color: #00c98c;
     transform: scale(1.05);
 }
 
 button:active {
-    background-color: #000000;
+    background-color: #bbbbbb;
     transform: scale(0.95);
 }
