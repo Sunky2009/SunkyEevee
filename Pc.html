@@ -3,94 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC OS-like Window</title>
+    <title>Sun OS</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #0078d7;
-            color: white;
+            background-color: #2e3436;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         .taskbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background-color: #333;
+            background-color: #202124;
+            padding: 5px;
             display: flex;
             align-items: center;
-            padding: 0 10px;
-        }
-
-        .start-button {
-            background-color: #0078d7;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .window {
-            position: absolute;
-            top: 50px;
-            left: 50px;
-            width: 400px;
-            height: 300px;
-            background-color: white;
-            color: black;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .window-header {
-            background-color: #0078d7;
-            color: white;
-            padding: 10px;
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            cursor: move;
         }
 
-        .window-content {
+        .desktop {
             flex: 1;
+            display: flex;
+            flex-wrap: wrap;
             padding: 10px;
-            overflow: auto;
         }
 
-        .close-button {
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .folder {
+            width: 80px;
+            text-align: center;
+            margin: 10px;
             cursor: pointer;
+        }
+
+        .folder img {
+            width: 64px;
+            height: 64px;
+        }
+
+        .folder span {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="window">
-        <div class="window-header">
-            <span>My Window</span>
-            <button class="close-button" onclick="this.parentElement.parentElement.style.display='none'">×</button>
-        </div>
-        <div class="window-content">
-            <p>Welcome to your PC OS-like window!</p>
+    <div class="taskbar">
+        <span>Sun OS</span>
+        <span>Time: <span id="time"></span>
+    </div>
+    <div class="desktop">
+        <div class="folder">
+            <img src="https://img.icons8.com/fluency/48/000000/folder-invoices.png" alt="Folder Icon">
+            <span onclick="openFolder()">Folder</span>
+            <div id="folderContent" style="display: none; margin-top: 10px;">
+                <div class="folder" onclick="openFile()">
+                    <img src="https://img.icons8.com/fluency/48/000000/document.png" alt="File Icon">
+                    <span>File.txt</span>
+                </div>
+            </div>
+            <script>
+                function openFolder() {
+                    const folderContent = document.getElementById('folderContent');
+                    folderContent.style.display = folderContent.style.display === 'none' ? 'block' : 'none';
+                }
+
+                function openFile() {
+                    const element = document.createElement('a');
+                    const fileContent = '';
+                    const blob = new Blob([fileContent], { type: 'text/plain' });
+                    element.href = URL.createObjectURL(blob);
+                    element.download = 'File.txt';
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                }
+            </script>
         </div>
     </div>
 
-    <div class="taskbar">
-        <button class="start-button">Start</button>
-    </div>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
 </body>
-</html>
+</html></div>
