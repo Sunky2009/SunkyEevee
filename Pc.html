@@ -1,88 +1,96 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web PC OS</title>
+    <title>PC OS-like Window</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #1e1e1e;
+            background-color: #0078d7;
             color: white;
-            overflow: hidden;
         }
-        #desktop {
-            width: 100vw;
-            height: 100vh;
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-            position: relative;
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
         }
-        .icon {
-            width: 80px;
-            text-align: center;
-            margin: 10px;
+
+        .start-button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
             cursor: pointer;
-            position: absolute;
         }
-        .icon img {
-            width: 50px;
-            height: 50px;
-        }
+
         .window {
-            width: 400px;
-            height: 300px;
-            background-color: #2e2e2e;
-            border: 2px solid #555;
             position: absolute;
             top: 50px;
             left: 50px;
-            display: none;
+            width: 400px;
+            height: 300px;
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
             flex-direction: column;
         }
+
         .window-header {
-            background-color: #444;
-            padding: 10px;
-            cursor: move;
+            background-color: #0078d7;
             color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
         }
+
         .window-content {
             flex: 1;
             padding: 10px;
-            background-color: #333;
+            overflow: auto;
         }
-        .close-btn {
-            float: right;
-            color: red;
+
+        .close-button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div id="desktop">
-        <div class="icon" style="top: 20px; left: 20px;" onclick="openWindow('myWindow')">
-            <img src="https://via.placeholder.com/50" alt="App Icon">
-            <p>App</p>
+    <div class="window">
+        <div class="window-header">
+            <span>My Window</span>
+            <button class="close-button" onclick="this.parentElement.parentElement.style.display='none'">×</button>
         </div>
-        <div id="myWindow" class="window">
-            <div class="window-header">
-                App
-                <span class="close-btn" onclick="closeWindow('myWindow')">X</span>
-            </div>
-            <div class="window-content">
-                <p>...</p>
-            </div>
+        <div class="window-content">
+            <p>Welcome to your PC OS-like window!</p>
         </div>
     </div>
 
-    <script>
-        function openWindow(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closeWindow(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-    </script>
+    <div class="taskbar">
+        <button class="start-button">Start</button>
+    </div>
 </body>
 </html>
