@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web PC OS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            overflow: hidden;
+        }
+        #desktop {
+            width: 100vw;
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            position: relative;
+        }
+        .icon {
+            width: 80px;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+            position: absolute;
+        }
+        .icon img {
+            width: 50px;
+            height: 50px;
+        }
+        .window {
+            width: 400px;
+            height: 300px;
+            background-color: #2e2e2e;
+            border: 2px solid #555;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            display: none;
+            flex-direction: column;
+        }
+        .window-header {
+            background-color: #444;
+            padding: 10px;
+            cursor: move;
+            color: white;
+        }
+        .window-content {
+            flex: 1;
+            padding: 10px;
+            background-color: #333;
+        }
+        .close-btn {
+            float: right;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="desktop">
+        <div class="icon" style="top: 20px; left: 20px;" onclick="openWindow('myWindow')">
+            <img src="https://via.placeholder.com/50" alt="App Icon">
+            <p>App</p>
+        </div>
+        <div id="myWindow" class="window">
+            <div class="window-header">
+                App
+                <span class="close-btn" onclick="closeWindow('myWindow')">X</span>
+            </div>
+            <div class="window-content">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWindow(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeWindow(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
